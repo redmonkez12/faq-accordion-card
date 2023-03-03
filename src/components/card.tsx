@@ -17,7 +17,7 @@ type Props = {
 export function Card({ items, handleClick }: Props) {
     return (
         <div
-            className={"md:desktop-images bg-white shadow-card w-full rounded-3xl px-6 pb-12 relative pt-34 max-w-[57.5rem] max-h-[509px] md:pt-16 md:pr-24 flex md:justify-end md:pb-24 md:overflow-hidden h-full"}>
+            className={"desktop-images bg-white shadow-card w-full rounded-3xl px-6 pb-12 relative pt-34 max-w-[57.5rem] max-h-[509px] md:pt-16 md:pr-24 flex md:justify-end md:pb-24 md:overflow-hidden h-full"}>
             <Image className={"md:hidden absolute top-[-90px] left-2/4 translate-x-[-50%]"}
                    src={"/images/illustration-woman-online-mobile.svg"} alt={"Hero image"} width={237} height={180}/>
 
@@ -29,7 +29,7 @@ export function Card({ items, handleClick }: Props) {
             <div className={"cube hidden md:block absolute top-[50%] left-[-45px] translate-y-[-50%]"}>
             </div>
             <div className={"max-w-[21.875rem]"}>
-                <h1 className={"uppercase text-black font-bold text-3xl text-center pb-9"}>Faq</h1>
+                <h1 className={"uppercase text-black font-bold text-3xl text-center pb-9 md:text-left"}>Faq</h1>
 
                 <ul>
                     {items.map(({ id, active, text, description }, index) => (

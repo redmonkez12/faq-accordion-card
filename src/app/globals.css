@@ -32,8 +32,10 @@ body {
     left: -61px !important;
 }
 
-.desktop-images {
-    background-image: url("/images/bg-pattern-desktop.svg");
-    background-repeat: no-repeat;
-    background-position: -575px -294px;
+@media screen and (min-width: 768px) {
+    .desktop-images {
+        background-image: url("/images/bg-pattern-desktop.svg");
+        background-repeat: no-repeat;
+        background-position: -575px -294px;
+    }
 }
