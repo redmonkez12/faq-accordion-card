@@ -1,91 +1,60 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from './page.module.css'
+"use client";
+import { Kumbh_Sans } from 'next/font/google'
+import { Card, FaqItem } from "@/components/card";
+import { useState } from "react";
 
-const inter = Inter({ subsets: ['latin'] })
+const kumbhSans = Kumbh_Sans({ subsets: ['latin'] })
+
+const items: FaqItem[] = [
+    {
+        id: 1,
+        text: "How many team members can I invite?",
+        description: "No more than 2GB. All files in your account must fit your allotted storage space.",
+        active: false,
+    },
+    {
+        id: 2,
+        text: "What is the maximum file upload size?",
+        description: "No more than 2GB. All files in your account must fit your allotted storage space.",
+        active: false,
+    },
+    {
+        id: 3,
+        text: "How do I reset my password?",
+        description: "No more than 2GB. All files in your account must fit your allotted storage space.",
+        active: false,
+    },
+    {
+        id: 4,
+        text: "Can I cancel my subscription?",
+        description: "No more than 2GB. All files in your account must fit your allotted storage space.",
+        active: false,
+    },
+    {
+        id: 5,
+        text: "Do you provide additional support?",
+        description: "No more than 2GB. All files in your account must fit your allotted storage space.",
+        active: false,
+    },
+];
 
 export default function Home() {
-  return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+    const [faqs, setFaqs] = useState(items);
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-        <div className={styles.thirteen}>
-          <Image src="/thirteen.svg" alt="13" width={40} height={31} priority />
-        </div>
-      </div>
+    function onClick(id: number) {
+        const newFaqs = faqs.map((faq) => {
+            return {
+                ...faq,
+                active: faq.id === id ? !faq.active : false,
+            };
+        });
 
-      <div className={styles.grid}>
-        <a
-          href="https://beta.nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+        setFaqs(newFaqs);
+    }
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+    return (
+        <main className={`${kumbhSans.className} w-full h-screen grid place-items-center`}>
+            <Card items={faqs} handleClick={onClick}/>
+        </main>
+    )
 }
